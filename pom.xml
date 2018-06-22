@@ -1,0 +1,205 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+	
+	<!-- Use 'mvn package' to package the dependencies into the jar -->
+	
+    <groupId>com.everhomes</groupId>
+    <artifactId>ehlearning</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    
+    <name>ehlearning</name>
+    <url>http://www.everhomes.com</url>
+
+    <distributionManagement>
+        <repository>
+          <id>everhomes.repo</id>
+          <name>Internal Repository</name>
+          <url>http://mvn-mirror.lab.everhomes.com:8081/artifactory/libs-snapshot-local</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        <java.source.version>1.8</java.source.version> 
+        <java.target.version>1.8</java.target.version> 
+     	<maven.test.skip>true</maven.test.skip>
+    </properties>
+
+	<!-- 
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.1.9.RELEASE</version>
+	</parent>
+ -->
+    <dependencies>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		    <version>1.5.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<artifactId>commons-logging</artifactId>
+            <groupId>commons-logging</groupId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.39</version>
+		</dependency>
+    </dependencies>
+
+    <build>
+    	<resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <plugins>         
+            <!-- <plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+				      <phase>validate</phase>
+				      <goals>
+				        <goal>copy-resources</goal>
+				      </goals>
+				      <configuration>
+				        <outputDirectory>${basedir}/target/resources</outputDirectory>
+				        <resources>          
+				          <resource>
+				            <directory>${basedir}/resources</directory>
+				            <filtering>true</filtering>
+				          </resource>
+				        </resources>              
+				      </configuration>            
+				    </execution>
+				  </executions>
+			</plugin> -->
+            <!-- download source code in Eclipse, best practice -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+				</configuration>
+			</plugin>
+			
+			<!-- Set a compiler level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${java.source.version}</source>
+					<target>${java.source.version}</target>
+				</configuration>
+			</plugin>
+
+			<!-- Make this jar executable -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.everhomes.springtest.core.TestTransactionPrgm</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			
+			<!-- Includes the runtime dependencies -->
+			<plugin>
+				<groupId>com.jolira</groupId>
+				<artifactId>onejar-maven-plugin</artifactId>
+				<version>1.4.4</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>one-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>  
+        </plugins>
+    </build>
+    
+    <profiles>
+        <profile>
+            <id>windows-profile</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <file>
+                    <exists>${JAVA_HOME}/lib/tools.jar</exists>
+                </file>
+            </activation>
+            <properties>
+                <toolsjar>${JAVA_HOME}/lib/tools.jar</toolsjar>
+            </properties>
+        </profile>
+	    <profile>
+	        <id>mac-profile</id>
+	        <activation>
+	            <activeByDefault>false</activeByDefault>
+	            <file>
+	                <exists>${java.home}/../Classes/classes.jar</exists>
+	            </file>
+	        </activation>
+	        <properties>
+	            <toolsjar>${java.home}/../Classes/classes.jar</toolsjar>
+	        </properties>
+	    </profile>
+	</profiles>
+</project>

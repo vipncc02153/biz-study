@@ -1,0 +1,8 @@
+#
+# Core service configuration
+#
+logging.path: ./
+logging.file: ehlearning.log
+logging.level.: INFO
+
+server.contextPath: /evh

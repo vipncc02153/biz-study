@@ -1,0 +1,6 @@
+2018-06-25 09:34:09.890 [main] INFO  [c.e.learning.core.EhLearningStartup] [] [] [] - Starting EhLearningStartup on DESKTOP-JM0V7EG with PID 752 (G:\zuolin\source\IDEA\eh-learning\target\classes started by admin in G:\zuolin\source\IDEA\eh-learning)
+2018-06-25 09:34:09.892 [main] DEBUG [c.e.learning.core.EhLearningStartup] [] [] [] - Running with Spring Boot v1.5.3.RELEASE, Spring v4.3.8.RELEASE
+2018-06-25 09:34:09.892 [main] INFO  [c.e.learning.core.EhLearningStartup] [] [] [] - No active profile set, falling back to default profiles: default
+2018-06-25 09:34:11.681 [main] INFO  [c.e.learning.core.EhLearningStartup] [] [] [] - Started EhLearningStartup in 2.106 seconds (JVM running for 3.568)
+2018-06-25 09:34:11.681 [main] ERROR [c.e.learning.core.EhLearningStartup] [] [] [] - Ehlearning application startup successfully, elapse=2208
+2018-06-25 09:34:29.415 [http-nio-8080-exec-2] DEBUG [c.e.l.s.controller.SampleController] [] [] [] - Get current time, time=2018-06-25 09:34:29.415

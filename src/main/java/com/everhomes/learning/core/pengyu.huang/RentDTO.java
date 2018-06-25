@@ -1,18 +1,34 @@
-import java.math.BigDecimal;
-import java.math.BigInteger;
+package com.everhomes.learning.core.pengyu.huang;
 
-public class RentDTO {
+import java.math.BigDecimal;
+
+public class RentDTO extends Rent{
     private Integer id;
     private String address;
     private BigDecimal price;
-    private String number_plate;
+    private String numberPlate;
     private String company;
 
-    public RentDTO(Integer id, String address, BigDecimal price, String number_plate, String company) {
+
+    private int num;
+
+    public RentDTO(){
+
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public RentDTO(Integer id, String address, BigDecimal price, String numberPlate, String company) {
         this.id = id;
         this.address = address;
         this.price = price;
-        this.number_plate = number_plate;
+        this.numberPlate = numberPlate;
         this.company = company;
     }
 
@@ -40,12 +56,12 @@ public class RentDTO {
         this.price = price;
     }
 
-    public String getNumber_plate() {
-        return number_plate;
+    public String getNumberPlate() {
+        return numberPlate;
     }
 
-    public void setNumber_plate(String number_plate) {
-        this.number_plate = number_plate;
+    public void setNumberPlate(String numberPlate) {
+        this.numberPlate = numberPlate;
     }
 
     public String getCompany() {
@@ -62,7 +78,7 @@ public class RentDTO {
                 "id=" + id +
                 ", address='" + address + '\'' +
                 ", price=" + price +
-                ", number_plate='" + number_plate + '\'' +
+                ", numberPlate='" + numberPlate + '\'' +
                 ", company='" + company + '\'' +
                 '}';
     }

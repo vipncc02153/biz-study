@@ -37,15 +37,17 @@ public class yangcx {
 				Method getMethod = pd.getReadMethod();//获得get方法
 				getMethod.invoke(obj);//此处为执行该Object对象的get方法
 				//System.out.println(getMethod.getReturnType() + " - " + field.getName() + " - " + getMethod.invoke(obj));
-				String key = "\"" + field.getName() + "\"";
-				String value = "";
-				Object sonObj = getMethod.invoke(obj);
-				if(isBean(sonObj)) {//如果是一个bean类，递归
-					value = objToJSON(sonObj).toString();
-				}else {
-					value = "\"" + getMethod.invoke(obj) + "\"";
+				if(getMethod.invoke(obj) != null) {
+					String key = "\"" + field.getName() + "\"";
+					String value = "";
+					Object sonObj = getMethod.invoke(obj);
+					if(isBean(sonObj)) {//如果是一个bean类，递归
+						value = objToJSON(sonObj).toString();
+					}else {
+						value = "\"" + getMethod.invoke(obj) + "\"";
+					}
+					jsonString.append(key + ":" + value + ",");
 				}
-				jsonString.append(key + ":" + value + ",");
 			}
 			if(jsonString.length() > 1) {
 				jsonString.deleteCharAt(jsonString.length() - 1);//去掉最后一个逗号

@@ -1,4 +1,4 @@
-package com.everhomes.learning.demos.hlm.json;
+package com.everhomes.learning.core.hlm.json;
 
 import java.util.Date;
 
@@ -10,6 +10,8 @@ public class User {
     private Integer age ;
     private Date birth ;
     private Dept dept;
+    private boolean isManager;
+    
 	public String getName() {
 		return name;
 	}
@@ -39,6 +41,12 @@ public class User {
 	}
 	public void setDept(Dept dept) {
 		this.dept = dept;
+	}
+	public boolean getIsManager() {
+		return isManager;
+	}
+	public void setIsManager(boolean isManager) {
+		this.isManager = isManager;
 	}
     
     

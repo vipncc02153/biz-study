@@ -1,9 +1,10 @@
-package com.everhomes.learning.demos.hlm.json;
+package com.everhomes.learning.core.hlm.json;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -12,7 +13,27 @@ import org.springframework.util.StringUtils;
 public class JSONUtils {
 			
 	private static final Log logger = LogFactory.getLog(JSONUtils.class);
-	
+	private static  ArrayList<String> baseType = new ArrayList<String>();
+	static{
+		baseType.add("java.lang.String");		
+		baseType.add("java.util.Date");
+		baseType.add("java.sql.Date");
+		baseType.add("java.lang.Integer");
+		baseType.add("java.lang.Long");
+		baseType.add("java.lang.Byte");
+		baseType.add("java.lang.Double");
+		baseType.add("java.lang.Foalt");
+		baseType.add("java.lang.Boolean");
+		baseType.add("java.math.BigDecimal");
+		baseType.add("boolean");
+		baseType.add("byte");
+		baseType.add("int");
+		baseType.add("long");
+		baseType.add("float");
+		baseType.add("double");
+		baseType.add("java.lang.Object");
+		baseType.add("java.lang.String");
+	}
 	/**
 	 * 返回  {"deptName":"研发部","deptNo":1001,"deptManager":"小刚"}   样子的字符串
 	 * @param obj
@@ -75,7 +96,10 @@ public class JSONUtils {
 	public static boolean isBaseType(Type type){
 		
 		if(type == null) return false ; 
-		if(type.getTypeName().indexOf("String")>=0 ){
+		if(baseType.contains(type.getTypeName())){
+			return true ;
+		}
+		/*if(type.getTypeName().indexOf("String")>=0 ){
 			return true ;
 		}
 		else if(type.getTypeName().indexOf("Integer")>=0){
@@ -105,6 +129,24 @@ public class JSONUtils {
 		else if(type.getTypeName().indexOf("float")>=0){
 			return true ;
 		}
+		else if(type.getTypeName().indexOf("byte")>=0){
+			return true ;
+		}
+		else if(type.getTypeName().indexOf("Byte")>=0){
+			return true ;
+		}
+		else if(type.getTypeName().indexOf("Boolean")>=0){
+			return true ;
+		}
+		else if(type.getTypeName().indexOf("boolean")>=0){
+			return true ;
+		}
+		else if(type.getTypeName().indexOf("BigDecimal")>=0){
+			return true ;
+		}
+		else if(type.getTypeName().indexOf("Object")>=0){
+			return true ;
+		}*/
 		return false;
 	}
 	
@@ -139,5 +181,7 @@ public class JSONUtils {
 		}
 		return value;
 	}
+	
+	
 	
 }

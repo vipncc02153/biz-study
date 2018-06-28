@@ -1,5 +1,6 @@
-package com.everhomes.learning.demos.hlm.json;
+package com.everhomes.learning.core.hlm.json;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,6 +15,8 @@ public class Test {
 		dept.setDeptNo(1001);
 		dept.setDeptName("研发部");
 		dept.setDeptManager("刘德华");
+		dept.setNum((byte) 0);
+		dept.setBigDecimal(new BigDecimal(1000000));
 		
 		User user = new User();
 		user.setAge(22);
@@ -28,6 +31,8 @@ public class Test {
 		user.setSex("男");
 		user.setDept(dept);
 		user.setName("小明");
+		user.setAge(20);
+		user.setIsManager(false);
 		
 		String userJSONString = JSONUtils.transferBean2JsonString(user);
 		//找了一个别人写的方法来对比

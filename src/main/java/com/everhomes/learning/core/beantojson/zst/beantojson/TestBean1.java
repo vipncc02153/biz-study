@@ -1,4 +1,4 @@
-package com.everhomes.learning.core.zst.beantojson;
+package com.everhomes.learning.core.beantojson.zst.beantojson;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

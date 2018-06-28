@@ -1,8 +1,7 @@
 // @formatter:off
-package com.everhomes.learning.core.lyl.beantojson;
+package com.everhomes.learning.core.beantojson.lyl.beantojson;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

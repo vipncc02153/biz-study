@@ -1,4 +1,4 @@
-package com.everhomes.learning.core.hlm.json;
+package com.everhomes.learning.core.beantojson.hlm.json;
 
 import java.util.Date;
 

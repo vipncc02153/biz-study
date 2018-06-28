@@ -1,4 +1,4 @@
-package com.everhomes.learning.core.zst.beantojson;
+package com.everhomes.learning.core.beantojson.zst.beantojson;
 
 public class TestBean2 extends TestBean1 {
     private String s;

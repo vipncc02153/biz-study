@@ -1,25 +1,16 @@
-package com.everhomes.learning.core.zst.beantojson;
+package com.everhomes.learning.core.beantojson.zst.beantojson;
 
 
-import com.alibaba.fastjson.JSON;
-import com.everhomes.learning.core.hlm.json.JSONUtils;
-import com.everhomes.learning.core.hmb.utils.MyJSONObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static com.everhomes.learning.core.hmb.utils.MyJSONObject.parseJSONObject;
 
 public class BeanToJson {
 
@@ -128,7 +119,7 @@ public class BeanToJson {
         Gson gson = new GsonBuilder().create();
 
         try {
-            System.out.println(com.everhomes.learning.core.huangPY.beantojson.BeanToJson.beanToJson(CreateTestBean.createTest1()));
+            System.out.println(com.everhomes.learning.core.beantojson.huangPY.beantojson.BeanToJson.beanToJson(CreateTestBean.createTest1()));
             System.out.println(gson.toJson(CreateTestBean.createTest1()));
         }catch (Exception e){
 

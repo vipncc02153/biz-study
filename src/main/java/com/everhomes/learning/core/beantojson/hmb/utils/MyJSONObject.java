@@ -1,4 +1,4 @@
-package com.everhomes.learning.core.hmb.utils;
+package com.everhomes.learning.core.beantojson.hmb.utils;
 
 import java.lang.reflect.Field;
 

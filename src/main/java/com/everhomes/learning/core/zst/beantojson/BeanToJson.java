@@ -2,6 +2,8 @@ package com.everhomes.learning.core.zst.beantojson;
 
 
 import com.alibaba.fastjson.JSON;
+import com.everhomes.learning.core.hlm.json.JSONUtils;
+import com.everhomes.learning.core.hmb.utils.MyJSONObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -12,9 +14,12 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static com.everhomes.learning.core.hmb.utils.MyJSONObject.parseJSONObject;
 
 public class BeanToJson {
 
@@ -31,7 +36,7 @@ public class BeanToJson {
             return null;
         }
         //获取java类的变量
-        Field[] fields=cla.getDeclaredFields();
+        Field[] fields=getAllDeclaredFields(cla);
         StringBuffer methodname=new StringBuffer();
         String separate="";
         for (Field field : fields){
@@ -74,6 +79,19 @@ public class BeanToJson {
         return build.toString();
     }
 
+    private static Field[] getAllDeclaredFields(Class<? extends Object> clazz){
+        List<Field> allFields = new ArrayList<>();
+
+        Class<? extends Object> currentClz = clazz;
+
+        while(currentClz != null){
+            Collections.addAll(allFields, currentClz.getDeclaredFields());
+            currentClz = currentClz.getSuperclass();
+        }
+        return allFields.toArray(new Field[allFields.size()]);
+
+    }
+
     private String parseBeanElement(Object value , Class<?> type){
         if (!Object.class.isAssignableFrom(type)){ //java基础类型
             return value.toString();
@@ -101,23 +119,19 @@ public class BeanToJson {
         bean.setByte1((byte)1);
         bean.setByte2((byte)2);
 
-        //bean.setObject(new BeanToJson());
+        bean.setObject(new BeanToJson());
 
 
-        TestBean1 bean2 = new TestBean1();
-        bean.setType(bean2);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-      // System.out.println(beanToJson.toJson(CreateTestBean.createTest1()));
-        String userName = "sss";
-        userName = userName.substring(0,userName.length()-2)+"*"+userName.substring(userName.length()-1,userName.length());
+        TestBean2 bean2 = new TestBean2();
+        bean2.setString1("1111");
+        bean2.setS("2222");
+        Gson gson = new GsonBuilder().create();
 
+        try {
+            System.out.println(com.everhomes.learning.core.huangPY.beantojson.BeanToJson.beanToJson(CreateTestBean.createTest1()));
+            System.out.println(gson.toJson(CreateTestBean.createTest1()));
+        }catch (Exception e){
 
-        List<Long> list = new ArrayList<>();
-        list.add(1l);
-        list.add(2l);
-        List<Long> collect = list.stream().filter(r -> r > 3).collect(Collectors.toList());
-
-        System.out.println(userName);
-
+        }
     }
 }

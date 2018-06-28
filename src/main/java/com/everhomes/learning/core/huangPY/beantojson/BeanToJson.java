@@ -2,6 +2,8 @@ package com.everhomes.learning.core.huangPY.beantojson;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class BeanToJson {
@@ -68,6 +70,8 @@ public class BeanToJson {
                 return "\"" + field.getName() + "\"" + ":" + invoke.toString() + ", ";
             }else if(isBean(invoke)){
                 return "\"" + field.getName() + "\"" + ":" + beanToJson(invoke) + ", ";
+            }else if(field.getGenericType().toString().equals("class java.util.Date")){
+                return "\"" + field.getName() + "\"" + ":" + "\"" + formatDateObj(invoke) + "\"" + ", ";
             }else{
                 return "\"" + field.getName() + "\"" + ":" + "\"" + invoke.toString() + "\"" + ", ";
             }
@@ -81,11 +85,18 @@ public class BeanToJson {
                 return "\"" + field.getName() + "\"" + ":" + invoke.toString() + ", ";
             }else if(isBean(invoke)){
                 return "\"" + field.getName() + "\"" + ":" + beanToJson2(invoke) + ", ";
+            }else if(field.getGenericType().toString().equals("class java.util.Date")){
+                return "\"" + field.getName() + "\"" + ":" + "\"" + formatDateObj(invoke) + "\"" + ", ";
             }else{
                 return "\"" + field.getName() + "\"" + ":" + "\"" + invoke.toString() + "\"" + ", ";
             }
         }
         return "";
+    }
+
+    private static String formatDateObj(Object invoke){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置显示格式
+        return dateFormat.format(invoke);
     }
 
     private static Boolean isNumber(Field field){

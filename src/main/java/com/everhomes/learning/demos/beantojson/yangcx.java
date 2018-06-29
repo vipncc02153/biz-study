@@ -1,10 +1,10 @@
-package com.everhomes.learning.core.beantojson;
+package com.everhomes.learning.demos.beantojson;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import com.everhomes.learning.core.beantojson.zst.beantojson.CreateTestBean;
+import com.everhomes.learning.sample.beantojson.CreateTestBean;
 
 public class yangcx {
 	

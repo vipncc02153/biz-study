@@ -1,4 +1,4 @@
-package com.everhomes.learning.core.beantojson.hlm.json;
+package com.everhomes.learning.demos.beantojson.hlm.json;
 
 import java.math.BigDecimal;
 import java.text.DateFormat;

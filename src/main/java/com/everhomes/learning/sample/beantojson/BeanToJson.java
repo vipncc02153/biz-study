@@ -1,4 +1,4 @@
-package com.everhomes.learning.core.beantojson.zst.beantojson;
+package com.everhomes.learning.sample.beantojson;
 
 
 import com.google.gson.Gson;
@@ -119,7 +119,7 @@ public class BeanToJson {
         Gson gson = new GsonBuilder().create();
 
         try {
-            System.out.println(com.everhomes.learning.core.beantojson.huangPY.beantojson.BeanToJson.beanToJson(CreateTestBean.createTest1()));
+            System.out.println(com.everhomes.learning.demos.beantojson.huangPY.beantojson.BeanToJson.beanToJson(CreateTestBean.createTest1()));
             System.out.println(gson.toJson(CreateTestBean.createTest1()));
         }catch (Exception e){
 

@@ -1,4 +1,4 @@
-package com.everhomes.learning.core.beantojson.huangPY.beantojson;
+package com.everhomes.learning.demos.beantojson.huangPY.beantojson;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package com.everhomes.learning.demos.beantojson;
+package com.everhomes.learning.demos.yangcx.beantojson;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 import com.everhomes.learning.sample.beantojson.CreateTestBean;
 
-public class yangcx {
+public class YcxBeanToJson {
 	
 	//判断是否是一个bean类
 	public static boolean isBean(Object obj){

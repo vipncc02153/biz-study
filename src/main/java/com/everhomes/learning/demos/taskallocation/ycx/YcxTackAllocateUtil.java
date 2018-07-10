@@ -1,6 +1,5 @@
-package com.everhomes.learning.demos.yangcx.taskallocate;
+package com.everhomes.learning.demos.taskallocation.ycx;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

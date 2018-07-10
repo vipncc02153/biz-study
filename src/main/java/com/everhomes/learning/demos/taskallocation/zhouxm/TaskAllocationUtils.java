@@ -1,4 +1,4 @@
-package com.everhomes.learning.demos.beantojson.zhouxm.taskallocation;
+package com.everhomes.learning.demos.taskallocation.zhouxm;
 
 
 import java.util.*;

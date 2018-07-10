@@ -1,4 +1,4 @@
-package com.everhomes.learning.demos.yangcx.taskallocate;
+package com.everhomes.learning.demos.taskallocation.ycx;
 
 import java.util.ArrayList;
 import java.util.List;

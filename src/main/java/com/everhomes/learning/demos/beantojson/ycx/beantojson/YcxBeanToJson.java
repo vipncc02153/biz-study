@@ -1,4 +1,4 @@
-package com.everhomes.learning.demos.yangcx.beantojson;
+package com.everhomes.learning.demos.beantojson.ycx.beantojson;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;

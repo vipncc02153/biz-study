@@ -119,7 +119,7 @@ public class BeanToJson {
         Gson gson = new GsonBuilder().create();
 
         try {
-            System.out.println(com.everhomes.learning.demos.beantojson.huangPY.beantojson.BeanToJson.beanToJson(CreateTestBean.createTest1()));
+            System.out.println(com.everhomes.learning.demos.beantojson.hpy.beantojson.BeanToJson.beanToJson(CreateTestBean.createTest1()));
             System.out.println(gson.toJson(CreateTestBean.createTest1()));
         }catch (Exception e){
 

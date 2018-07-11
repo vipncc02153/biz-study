@@ -3,6 +3,7 @@ package com.everhomes.learning.sample.beantojson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.springframework.beans.BeanUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.TreeMap;
 
 public class BeanToJson {
 
@@ -103,26 +105,22 @@ public class BeanToJson {
     public static void main(String [] args){
         BeanToJson beanToJson = new BeanToJson();
         TestBean1<TestBean1> bean = new TestBean1();
-        bean.setBigDecimal1(new BigDecimal(10));
-        bean.setLong1(10l);
-        bean.setBool1(true);
-        bean.setBool2(false);
-        bean.setByte1((byte)1);
-        bean.setByte2((byte)2);
-
-        bean.setObject(new BeanToJson());
+        bean.setString1("ssss");
 
 
         TestBean2 bean2 = new TestBean2();
-        bean2.setString1("1111");
-        bean2.setS("2222");
+
         Gson gson = new GsonBuilder().create();
+        BeanUtils.copyProperties(bean2,bean,"string1");
+        //System.out.println(gson.toJson(bean));
 
-        try {
-            System.out.println(com.everhomes.learning.demos.beantojson.huangPY.beantojson.BeanToJson.beanToJson(CreateTestBean.createTest1()));
-            System.out.println(gson.toJson(CreateTestBean.createTest1()));
-        }catch (Exception e){
-
-        }
+//        try {
+//            System.out.println(com.everhomes.learning.demos.beantojson.huangPY.beantojson.BeanToJson.beanToJson(CreateTestBean.createTest1()));
+//            System.out.println(gson.toJson(CreateTestBean.createTest1()));
+//        }catch (Exception e){
+//
+//        }
+        BigDecimal num = new BigDecimal(5);
+        System.out.println(num.setScale(2));
     }
 }

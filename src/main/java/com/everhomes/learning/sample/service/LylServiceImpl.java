@@ -14,4 +14,9 @@ public class LylServiceImpl implements LylService{
     public int getInteger(int i) {
         return this.lylCacheProvider.getInteger(i);
     }
+
+    @Override
+    public int updateInteger(int i) {
+        return this.lylCacheProvider.updateInteger(i);
+    }
 }

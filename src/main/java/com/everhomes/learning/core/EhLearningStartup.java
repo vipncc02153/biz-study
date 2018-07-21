@@ -31,6 +31,7 @@ public class EhLearningStartup {
             
             app.run(args);
         } catch(Throwable e) {
+            e.printStackTrace();
             long endTime = System.currentTimeMillis();
             LOGGER.error("Ehlearning application failed to startup, elapse={}", (endTime - startTime));
         }

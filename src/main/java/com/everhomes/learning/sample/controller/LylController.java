@@ -12,8 +12,15 @@ public class LylController {
 
     @Autowired
     private LylService lylService;
+
+
     @RequestMapping("getInteger")
     public int getInteger(int key) {
         return this.lylService.getInteger(key);
+    }
+
+    @RequestMapping("updateInteger")
+    public int updateInteger(int key) {
+        return this.lylService.updateInteger(key);
     }
 }

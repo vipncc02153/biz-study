@@ -15,20 +15,20 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Aspect
 @Component
 public class CacheAspect {
-    private static final Logger logger = LoggerFactory.getLogger("METHOD_CACHE");
+    private static final Logger logger = LoggerFactory.getLogger(CacheAspect.class);
     private static Map<String, Object> cacheMap = new LinkedHashMap();
 
-    @Around("@annotation(com.everhomes.learning.demos.cache.lyl.Cacheable)")
+    @Around(value = "@annotation(com.everhomes.learning.demos.cache.lyl.Cacheable)")
     public Object cache(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object result = null;
-        String key = getCacheKey(proceedingJoinPoint);
+        Class returnType = getReturnType(proceedingJoinPoint);
+        String key = getCacheKey(proceedingJoinPoint,returnType);
         result = cacheMap.get(key);
         if (result == null) {
             result = proceedingJoinPoint.proceed(proceedingJoinPoint.getArgs());
@@ -46,7 +46,8 @@ public class CacheAspect {
     @Around("@annotation(com.everhomes.learning.demos.cache.lyl.CacheEvict)")
     public Object evict(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object result = null;
-        String key = getCacheKey(proceedingJoinPoint);
+        Class returnType = getReturnType(proceedingJoinPoint);
+        String key = getCacheKey(proceedingJoinPoint,returnType);
         result = cacheMap.get(key);
         if (result != null) {
             cacheMap.remove(key);
@@ -60,9 +61,14 @@ public class CacheAspect {
      * 根据类名、方法名和参数值获取唯一的缓存键
      * @return 格式为 "包名.类名.方法名.参数类型.参数值"
      */
-    private String getCacheKey(ProceedingJoinPoint joinPoint) {
-        return String.format("%s.%s",
-                joinPoint.getSignature().toString().split("\\s")[1], StringUtils.join(joinPoint.getArgs(), ","));
+    private String getCacheKey(ProceedingJoinPoint joinPoint, Class returnType) {
+        return String.format("%s#%s",
+                returnType.getName(), StringUtils.join(joinPoint.getArgs(), ","));
+    }
+
+    private Class getReturnType(ProceedingJoinPoint proceedingJoinPoint) {
+        MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
+        return signature.getMethod().getReturnType();
     }
 
 }

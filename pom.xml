@@ -96,6 +96,21 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 			<version>1.5.3.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.8.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.6</version>
+		</dependency>
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -201,7 +216,7 @@
                 </file>
             </activation>
             <properties>
-                <toolsjar>${JAVA_HOME}/lib/tools.jar</toolsjar>
+                <!--<toolsjar>${JAVA_HOME}/lib/tools.jar</toolsjar>-->
             </properties>
         </profile>
 	    <profile>

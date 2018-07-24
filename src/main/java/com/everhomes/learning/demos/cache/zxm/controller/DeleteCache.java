@@ -1,4 +1,4 @@
-package com.everhomes.learning.demos.aop.controller;
+package com.everhomes.learning.demos.cache.zxm.controller;
 
 import java.lang.annotation.*;
 
@@ -6,10 +6,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-public @interface GetCache {
+public @interface DeleteCache {
+
     String value();
 
     String key() default "";
 
-    int expireSeconds() default 0;
 }

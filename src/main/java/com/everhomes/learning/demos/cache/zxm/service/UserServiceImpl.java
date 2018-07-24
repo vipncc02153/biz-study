@@ -1,7 +1,8 @@
-package com.everhomes.learning.demos.aop.service;
+package com.everhomes.learning.demos.cache.zxm.service;
 
-import com.everhomes.learning.demos.aop.controller.User;
-import com.everhomes.learning.demos.aop.provider.UserProvider;
+
+import com.everhomes.learning.demos.cache.zxm.controller.User;
+import com.everhomes.learning.demos.cache.zxm.provider.UserProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

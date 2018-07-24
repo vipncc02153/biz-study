@@ -1,9 +1,9 @@
-package com.everhomes.learning.demos.aop.provider;
+package com.everhomes.learning.demos.cache.zxm.provider;
 
-import com.everhomes.learning.demos.aop.controller.Caching;
-import com.everhomes.learning.demos.aop.controller.DeleteCache;
-import com.everhomes.learning.demos.aop.controller.GetCache;
-import com.everhomes.learning.demos.aop.controller.User;
+import com.everhomes.learning.demos.cache.zxm.controller.Caching;
+import com.everhomes.learning.demos.cache.zxm.controller.DeleteCache;
+import com.everhomes.learning.demos.cache.zxm.controller.GetCache;
+import com.everhomes.learning.demos.cache.zxm.controller.User;
 
 import java.util.List;
 

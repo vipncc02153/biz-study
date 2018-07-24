@@ -1,6 +1,6 @@
-package com.everhomes.learning.demos.aop.controller;
+package com.everhomes.learning.demos.cache.zxm.controller;
 
-import com.everhomes.learning.demos.aop.DataUtils.DataCache;
+import com.everhomes.learning.demos.cache.zxm.DataUtils.DataCache;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -86,7 +86,7 @@ public class CacheInterceptor{
    * @param
    * @return java.lang.Object
    **/
-   @Around(value = "@annotation(com.everhomes.learning.demos.aop.controller.GetCache)")
+   @Around(value = "@annotation(com.everhomes.learning.demos.cache.zxm.controller.GetCache)")
    public Object getOrSetCache(ProceedingJoinPoint pjp) throws Throwable{
        MethodSignature ms = (MethodSignature) pjp.getSignature();
        Method method = ms.getMethod();
@@ -113,7 +113,7 @@ public class CacheInterceptor{
      * @param
      * @return java.lang.Object
      **/
-    @Around(value = "@annotation(com.everhomes.learning.demos.aop.controller.DeleteCache)")
+    @Around(value = "@annotation(com.everhomes.learning.demos.cache.zxm.controller.DeleteCache)")
     public Object deleteCache(ProceedingJoinPoint pjp) throws Throwable{
         MethodSignature ms = (MethodSignature) pjp.getSignature();
         Method method = ms.getMethod();
@@ -139,7 +139,7 @@ public class CacheInterceptor{
      * @param
      * @return java.lang.Object
      **/
-    @Around(value = "@annotation(com.everhomes.learning.demos.aop.controller.Caching)")
+    @Around(value = "@annotation(com.everhomes.learning.demos.cache.zxm.controller.Caching)")
     public Object Caching(ProceedingJoinPoint pjp) throws Throwable{
         MethodSignature ms = (MethodSignature) pjp.getSignature();
         Method method = ms.getMethod();

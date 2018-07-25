@@ -9,10 +9,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.TreeMap;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BeanToJson {
 
@@ -113,14 +116,10 @@ public class BeanToJson {
         Gson gson = new GsonBuilder().create();
         BeanUtils.copyProperties(bean2,bean,"string1");
         //System.out.println(gson.toJson(bean));
+        LocalDateTime startDate = new java.util.Date(System.currentTimeMillis()).toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        startDate = LocalDateTime.of(startDate.toLocalDate(), LocalTime.MIN);
+        System.out.println(startDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
 
-//        try {
-//            System.out.println(com.everhomes.learning.demos.beantojson.huangPY.beantojson.BeanToJson.beanToJson(CreateTestBean.createTest1()));
-//            System.out.println(gson.toJson(CreateTestBean.createTest1()));
-//        }catch (Exception e){
-//
-//        }
-        BigDecimal num = new BigDecimal(5);
-        System.out.println(num.setScale(2));
+
     }
 }

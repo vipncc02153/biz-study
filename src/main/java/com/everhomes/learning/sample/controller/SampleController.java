@@ -25,4 +25,14 @@ public class SampleController {
         
         return time;
     }
+
+    @RequestMapping("getCache")
+    public String getCache(){
+        return sampleService.getCache();
+    }
+
+    @RequestMapping("flushCache")
+    public String flushCache(){
+        return sampleService.flushCache();
+    }
 }

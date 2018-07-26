@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ import org.springframework.context.annotation.ImportResource;
       HibernateJpaAutoConfiguration.class,
       FreeMarkerAutoConfiguration.class
   })
+@EnableCaching
 public class EhLearningStartup {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EhLearningStartup.class);
 

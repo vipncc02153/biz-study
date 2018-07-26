@@ -1,6 +1,5 @@
 package com.everhomes.learning.demos.cache.hpy.impl;
 
-import com.everhomes.learning.demos.cache.hpy.DoTaskCache;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -52,11 +51,6 @@ public class TaskCacheAspect {
     @Around("getParam()")
     public Object getTaskCache(ProceedingJoinPoint pjp) throws Throwable {
 
-        String className = pjp.getTarget().getClass().getName();
-        String methodName = pjp.getSignature().getName();
-        LOGGER.info("className = {}",className);
-        LOGGER.info("methodName = {}",methodName);
-
         Object[] method_args = pjp.getArgs();
 
         LOGGER.info("尝试一个缓存，key=" + method_args[0]);
@@ -65,6 +59,25 @@ public class TaskCacheAspect {
             return cacheMap.get(method_args[0]);
         }else{
             return pjp.proceed();
+        }
+    }
+
+    @Pointcut(value = "@annotation(com.everhomes.learning.demos.cache.hpy.DeleteTaskCache)")
+    public void deleteParam(){
+
+    }
+
+    @After("deleteParam()")
+    public void deleteTaskCache(JoinPoint point){
+
+        Object[] method_args = point.getArgs();
+
+        LOGGER.info("尝试删除缓存，key=" + method_args[0]);
+        if(cacheMap.containsKey(method_args[0])){
+            LOGGER.info("获取缓存成功");
+            cacheMap.remove(method_args[0]);
+        }else{
+            LOGGER.error("未找到" + method_args[0]);
         }
     }
 

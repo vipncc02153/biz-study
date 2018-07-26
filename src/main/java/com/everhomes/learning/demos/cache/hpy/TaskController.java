@@ -30,4 +30,11 @@ public class TaskController {
     public Object getCacheDefeat() {
         return taskService.getTask("No.2");
     }
+
+    @RequestMapping(value = "deleteCache")
+    @ResponseBody
+    public Object deleteCache() {
+        taskService.deleteTask("No.1");
+        return "OK";
+    }
 }

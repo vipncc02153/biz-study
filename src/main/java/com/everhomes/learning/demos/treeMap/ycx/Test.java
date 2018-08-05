@@ -18,6 +18,8 @@ public class Test {
 		System.out.println("\n删除90之后的二叉排序树：");
 		tree.inorder(tree);
 		
+		System.out.println("\n查询60是否在二叉排序树中：" + tree.searchBST(tree, 60L));
+		System.out.println("\n查询90是否在二叉排序树中：" + tree.searchBST(tree, 90L));
 	}
 
 }

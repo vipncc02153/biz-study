@@ -77,6 +77,19 @@ public class BinSortTree {
         	}
     	}
     }
+    
+    /**查找二叉排序树中是否有key值*/
+	public boolean searchBST(BinSortTree tree, Long item){
+		while(tree != null){
+			if(item == tree.data)
+				return true;
+			else if(item < tree.data)
+				tree = tree.lChild;
+			else
+				tree = tree.rChild;
+		}
+		return false;
+	}
   
     // 中序遍历 (对于二叉排序树 相当于从小到大输出)  
     public void inorder(BinSortTree tree) {  

@@ -36,7 +36,6 @@ public class MyMap {
             else
                 return;
         }
-        node.setParent(prev);
         if(root == null)
             root = node;
         else if(node.getKey() < prev.getKey())
@@ -75,20 +74,21 @@ public class MyMap {
         removeNode(this.root, key);
     }
 
-    private boolean removeNode(Node node, int key){
+    private Node removeNode(Node node, int key){
         if(node == null)
-            return false;
+            return null;
         else{
             if(key == node.getKey())
-                return deleteNode(node);
+                node = deleteNode(node);
             else if(key < node.getKey())
-                return removeNode(node.getLeft(), key);
+                node.setLeft(removeNode(node.getLeft(), key));
             else
-                return removeNode(node.getRight(), key);
+                node.setRight(removeNode(node.getRight(), key));
         }
+        return node;
     }
 
-    private boolean deleteNode(Node node){
+    private Node deleteNode(Node node){
         Node temp = null;
 
         // 右子树空, 用要删除的节点的左子树替换该节点
@@ -123,7 +123,7 @@ public class MyMap {
                 temp.setLeft(s.getLeft());
             }
         }
-        return true;
+        return node;
     }
 
 }

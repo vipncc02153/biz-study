@@ -12,7 +12,6 @@ public class Node {
     private Object value;
     private Node left;
     private Node right;
-    private Node parent;
 
     public Node(int key, Object value){
         this.key = key;
@@ -61,12 +60,5 @@ public class Node {
         this.right = right;
     }
 
-    public Node getParent() {
-        return parent;
-    }
-
-    public void setParent(Node parent) {
-        this.parent = parent;
-    }
 }
 

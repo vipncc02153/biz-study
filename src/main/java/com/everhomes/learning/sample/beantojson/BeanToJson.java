@@ -1,6 +1,7 @@
 package com.everhomes.learning.sample.beantojson;
 
 
+import com.everhomes.learning.sample.segmenttree.SegmentTree;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.BeanUtils;
@@ -106,19 +107,10 @@ public class BeanToJson {
     }
 
     public static void main(String [] args){
-        BeanToJson beanToJson = new BeanToJson();
-        TestBean1<TestBean1> bean = new TestBean1();
-        bean.setString1("ssss");
+       Double i = 1.0;
+       int j = 2;
 
 
-        TestBean2 bean2 = new TestBean2();
-
-        Gson gson = new GsonBuilder().create();
-        BeanUtils.copyProperties(bean2,bean,"string1");
-        //System.out.println(gson.toJson(bean));
-        LocalDateTime startDate = new java.util.Date(System.currentTimeMillis()).toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        startDate = LocalDateTime.of(startDate.toLocalDate(), LocalTime.MIN);
-        System.out.println(startDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
 
 
     }

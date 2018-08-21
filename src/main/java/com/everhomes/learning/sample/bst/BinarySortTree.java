@@ -1,7 +1,6 @@
 package com.everhomes.learning.sample.bst;
 
 import java.util.Comparator;
-import java.util.TreeMap;
 
 public class BinarySortTree<K,V> {
     private BSTNode<K,V> root;

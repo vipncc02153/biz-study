@@ -1,6 +1,7 @@
 package com.everhomes.learning.sample.beantojson;
 
 
+import com.everhomes.learning.sample.bst.BinarySortTree;
 import com.everhomes.learning.sample.segmenttree.SegmentTree;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -107,11 +108,14 @@ public class BeanToJson {
     }
 
     public static void main(String [] args){
-       Double i = 1.0;
-       int j = 2;
-
-
-
+        BinarySortTree<Long,String> tree = new BinarySortTree<>();
+        tree.put(8l,"aaa");
+        tree.put(9l,"bbb");
+        tree.put(5l,"ccc");
+        tree.put(2l,"ddd");
+        tree.put(7l,"eee");
+        tree.remove(5l);
+        System.out.println(tree.get(5l));
 
     }
 }

@@ -3,6 +3,7 @@ package com.everhomes.learning.sample.service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.everhomes.learning.sample.distributelock.CoordinationProvider;
 import com.everhomes.learning.sample.provider.SampleCacheProviderImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,12 @@ public class SampleServiceImpl implements SampleService {
     private static final Logger logger = LoggerFactory.getLogger(SampleServiceImpl.class);
 
     @Autowired
+    private CoordinationProvider coordinationProvider;
+
+    @Autowired
     private SampleCacheProviderImpl sampleCacheProvider;
+
+    private static Long num = 0l;
 
     public SampleServiceImpl() {
     }
@@ -36,5 +42,17 @@ public class SampleServiceImpl implements SampleService {
         return null;
     }
 
+    @Override
+    public void getLock() {
+        coordinationProvider.getNamedLock("testLock").enter(()->{
+            Long i = num++;
+            logger.info("get the lock "+i);
+            Long now = System.currentTimeMillis();
+            while (System.currentTimeMillis() < now + 5000){
 
+            }
+            logger.info("release the lock" +i );
+            return true;
+        });
+    }
 }

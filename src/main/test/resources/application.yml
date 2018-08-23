@@ -1,0 +1,11 @@
+#
+# Core service configuration
+#
+logging.path: ./
+logging.file: ehlearning.log
+logging.level.: INFO
+
+server.contextPath: /evh
+
+zk.zkUrl: 10.1.10.41:2181
+zk.sessionTimeout: 60000

@@ -35,4 +35,11 @@ public class SampleController {
     public String flushCache(){
         return sampleService.flushCache();
     }
+
+    @RequestMapping("getLock")
+    public String getLock(){
+         sampleService.getLock();
+         return "";
+    }
+
 }

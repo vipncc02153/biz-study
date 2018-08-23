@@ -6,4 +6,6 @@ public  interface SampleService {
     String getCache();
 
     String flushCache();
+
+    void getLock();
 }

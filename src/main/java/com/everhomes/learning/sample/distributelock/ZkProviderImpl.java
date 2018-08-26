@@ -27,7 +27,6 @@ public class ZkProviderImpl implements ZkProvider {
     public ZkProviderImpl(ZookeeperProperties properties) {
         this.properties = properties;
     }
-
     @PostConstruct
     public void init(){
         try {

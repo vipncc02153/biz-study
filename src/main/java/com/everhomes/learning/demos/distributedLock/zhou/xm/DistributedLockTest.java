@@ -11,15 +11,14 @@ public class DistributedLockTest {
     public static void main(String[] args){
         Runnable runnable = new Runnable() {
             public void run() {
-                DistributedLock lock = null;
+                ZkNameLock lock = null;
                 try {
-                    lock = new DistributedLock("10.1.10.41:2181", "test1");
-                    lock.lock();
+                    //lock.lock();
                     secskill();
                     System.out.println(Thread.currentThread().getName() + "正在运行");
                 } finally {
                     if (lock != null) {
-                        lock.unlock();
+                       // lock.unlock();
                     }
                 }
             }

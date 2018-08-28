@@ -26,8 +26,6 @@ public class ZKLock implements Watcher {
 	private static final String SUB_PATH = "/disLocks/sub";
 	private static final String CONNECTION_STRING = "10.1.10.41:2181";
 
-	private String lockNameSpace = "/mylock";
-
 	private static final int THREAD_NUM = 10;
 	// 确保连接zk成功；
 	private CountDownLatch connectedSemaphore = new CountDownLatch(1);
